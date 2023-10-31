@@ -1,382 +1,428 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>uh
+    
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    
-   
-    
     <style>
-    
-    
-    style>
-       .movie-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  gap: 20px;
-}
+         body {
+            display: grid;
+            grid-template-rows: 1fr 1fr; /* Divide el cuerpo en dos filas iguales */
+            grid-template-columns: 1fr 1fr; /* Divide el cuerpo en dos columnas iguales */
+            margin: 0;
+            height: 100vh;
+        }
 
+        .box1 {
+            background-color: rgba(255, 0, 0, 0.3);
+            width: 50%;
+            height: 50%;
+            position: fixed;
+        }
 
+        .box2 {
+            background-color: rgba(0, 255, 0, 0.3);
+            width: 50%;
+            height: 50%;
+            position: fixed;
+            right: 0;
+        }
 
-.movie {
-    width: 18%;
-    display: inline-block;
-    margin: 1%;
-    vertical-align: top;
+        .box3 {
+            background-color: rgba(0, 0, 255, 0.3);
+            width: 50%;
+            height: 50%;
+            position: fixed;
+            bottom: 0;
+        }
 
-    
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px;
+        .box4 {
+            background-color: rgba(255, 255, 0, 0.3);
+            width: 50%;
+            height: 50%;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+     body {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://i.pinimg.com/originals/e1/3f/b9/e13fb9a5b0d1a4234e9d049faf2598b6.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: black;
+        }
+
+        .big-box {
+            flex-basis: 50%;
+            height: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-sizing: border-box;
+        }
+
+        .movie {
             width: 150px;
+            height: 300px;
+            border: 1px solid black;
+            margin: 10px;
+            float: left;
+            display: inline-block;
             text-align: center;
             background-color: #f9f9f9;
             cursor: move;
-     
-}
-.movie {
-            width: 150px;
-            border: 1px solid #ccc;
             padding: 10px;
-            margin: 10px;
-            display: inline-block;
-        }
-
-        .movie {
-            width: 150px; /* Ancho del div */
-            height: 250px; /* Alto del div */
-            border: 1px solid black; /* Borde para mejor visualización */
-            margin: 10px; /* Margen entre los divs */
-            float: left; /* Para que los divs se alineen en una fila */
-        }
-
-        
-        .movie img {
-            max-width: 100%; /* Ajuste máximo del ancho de la imagen */
-            max-height: 80%; /* Ajuste máximo de la altura de la imagen */
-            display: block; /* Para asegurarse de que no haya espacio adicional alrededor de la imagen */
-            margin: auto; /* Centra la imagen dentro de su contenedor */
-        }
-@media screen and (max-width: 1200px) {
-    .movie {
-        width: 22%;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .movie {
-        width: 28%;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .movie {
-        width: 42%;
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .movie {
-        width: 100%;
-    }
-}
-
-
-        body {
+            position: relative;
             font-family: Arial, sans-serif;
         }
 
-        .movie {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
+        .movie img {
+            max-width: 100%;
+            max-height: 80%;
+            display: block;
+            margin: auto;
         }
 
-        .title {
-            font-weight: bold;
+        .movie .rank {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
         }
 
-        .director {
-            color: #555;
+        .movie .reaction {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
         }
 
-        .release-date {
-            color: #777;
+        .movie:hover .reaction {
+            display: block;
         }
-        img {
-    width: 300px;
-    /* Aquí puedes ajustar el tamaño según tus preferencias */
-    height: 450px;
-    /* Esto asegurará que la imagen se ajuste proporcionalmente */
-}
-body {
-    background-image: url('https://i.pinimg.com/originals/e1/3f/b9/e13fb9a5b0d1a4234e9d049faf2598b6.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: black;
-}
+
+        .movies-container {
+            position: relative;
+            z-index: 1;
+        }                
     </style>
 </head>
-
 <body>
+
     <h1>Marvel Studios Cinematic Universe Release Guideline</h1>
-    <table>
-       
-    
-    <div class="movie">
-        <p class="title">Iron Man</p>
-        <p class="director">Director: Jon Favreau</p>
-        <p class="release-date">Fecha de estreno: May 2, 2008</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Koehler_IronMan_1500px.jpg?v=1657315505&" alt="Iron Man Poster">
-    </div>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+    </body>
 
-
+<div class="movies-container">
+<div class="movie">
+                    <p class="title">Iron Man</p>
+                    <p class="director">Director: Jon Favreau</p>
+                    <p class="release-date">Fecha de estreno: May 2, 2008</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Koehler_IronMan_1500px.jpg?v=1657315505&" alt="Iron Man Poster">
+                    <div class="rank">Rank: 1</div>
+                    <div class="reaction">
+                        <div>&#128077;</div>
+                        <div>&#128078;</div>
+                        <div>ITS OKAY</div>
+                      </div>
+                    </div>
+                
+                <div class="movie">
+                    <p class="title">The Incredible Hulk</p>
+                    <p class="director">Director: Louis Leterrier</p>
+                    <p class="release-date">Fecha de estreno: June 13, 2008</p>
+                    <img src="https://posterspy.com/wp-content/uploads/2020/06/IncredibleHulk_FiNAL_Plan-de-travail-1.png" alt="The Incredible Hulk Poster">
+                    <div class="reaction">
+                        
+                    </div>
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Iron Man 2</p>
+                    <p class="director">Director: Jon Favreau</p>
+                    <p class="release-date">Fecha de estreno: May 7, 2010</p>
+                    <img src="https://cdn.shopify.com/s/files/1/0558/2081/files/blog_iron_man6.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Thor</p>
+                    <p class="director">Director: Kenneth Branagh</p>
+                    <p class="release-date">Fecha de estreno: May 6, 2011</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/thor_blog_thumb_e75d865c-3a27-4990-aed4-dfa78fbf259f.jpeg" alt="Thor Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Captain America: The First Avenger</p>
+                    <p class="director">Director: Joe Johnston</p>
+                    <p class="release-date">Fecha de estreno: July 22, 2011</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Francavilla_CaptainAmericaTFA_1500px.jpg" alt="Captain America: The First Avenger Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">The Avengers</p>
+                    <p class="director">Director: Joss Whedon</p>
+                    <p class="release-date">Fecha de estreno: May 4, 2012</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Juugo_Avengers_1500px.jpg">
+                </div>
+            
+            
+            
+            
+                <div class="movie">
+                    <p class="title">Iron Man 3</p>
+                    <p class="director">Director: Shane Black</p>
+                    <p class="release-date">Fecha de estreno: May 3, 2013</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/ansin-ironman3-reg-main.jpeg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Thor: The Dark World</p>
+                    <p class="director">Director: Alan Taylor</p>
+                    <p class="release-date">Fecha de estreno: November 8, 2013</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/taylorthor2regarchive_thumb_af72a088-a68d-4dcf-8cb8-1cbe112c1126.jpeg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Captain America: The Winter Soldier</p>
+                    <p class="director">Directores: Anthony and Joe Russo</p>
+                    <p class="release-date">Fecha de estreno: April 4, 2014</p>
+                    <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericathewintersoldier_lob_crd_01.jpg" alt="Captain America: The Winter Soldier Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Guardians of the Galaxy</p>
+                    <p class="director">Director: James Gunn</p>
+                    <p class="release-date">Fecha de estreno: August 1, 2014</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/FrancescoFrancavilla_StarLord_Variant_blog.jpg" alt="Guardians of the Galaxy Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Avengers: Age of Ultron</p>
+                    <p class="director">Director: Joss Whedon</p>
+                    <p class="release-date">Fecha de estreno: May 1, 2015</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/AvengersAOU-Standard_FINALPRINT_1.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Ant-Man</p>
+                    <p class="director">Director: Peyton Reed</p>
+                    <p class="release-date">Fecha de estreno: July 17, 2015</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Mondo_Tong_AntMan_foilvariant_final_1024x1024_0b3f06ed-2e03-41dd-8aa0-3c85eee6f123.jpg">
+                </div>
+            
+                <div class="movie">
+                    <p class="title">Captain America: Civil War</p>
+                    <p class="director">Director: Anthony and Joe Russo</p>
+                    <p class="release-date">Fecha de estreno: May 6, 2016</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Barrett_CACW_Reg-Lg.jpg" alt="Captain America: Civil War Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Doctor Strange</p>
+                    <p class="director">Director: Scott Derrickson</p>
+                    <p class="release-date">Fecha de estreno: November 4, 2016</p>
+                    <img src="https://i.ebayimg.com/images/g/5UUAAOSwLrNeczFo/s-l1600.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Guardians of the Galaxy Vol. 2</p>
+                    <p class="director">Director: James Gunn</p>
+                    <p class="release-date">Fecha de estreno: May 5, 2017</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/KTaylor_GOTGVol2_REG_FINAL_SM.jpg" alt="Guardians of the Galaxy Vol. 2 Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Spider-Man: Homecoming</p>
+                    <p class="director">Director: Jon Watts</p>
+                    <p class="release-date">Fecha de estreno: July 7, 2017</p>
+                    <img src="https://i.pinimg.com/originals/db/6c/57/db6c571b245d97afc2378c7b5a400e47.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Thor: Ragnarok</p>
+                    <p class="director">Director: Taika Waititi</p>
+                    <p class="release-date">Fecha de estreno: November 3, 2017</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/MTaylor_ThorRagnarok_REGULAR_SM.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Black Panther</p>
+                    <p class="director">Director: Ryan Coogler</p>
+                    <p class="release-date">Fecha de estreno: February 16, 2018</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Taylor_BlackPanther_Var-Lg_1.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Avengers: Infinity War</p>
+                    <p class="director">Director: Anthony and Joe Russo</p>
+                    <p class="release-date">Fecha de estreno: April 27, 2018</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Taylor_InfinityWar_Reg_Sm.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Ant-Man and The Wasp</p>
+                    <p class="director">Director: Peyton Reed</p>
+                    <p class="release-date">Fecha de estreno: July 6, 2018</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/PCC_AntManWasp_Vert_Sm.jpg" alt="Ant-Man and The Wasp Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Captain Marvel</p>
+                    <p class="director">Director: Anna Boden and Ryan Fleck</p>
+                    <p class="release-date">Fecha de estreno: March 8, 2019</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Taylor_CM-Reg_Sm.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Avengers: Endgame</p>
+                    <p class="director">Director: Anthony and Joe Russo</p>
+                    <p class="release-date">Fecha de estreno: April 26, 2019</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Taylor_Endgame_R_Sm.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Spider-Man: Far From Home</p>
+                    <p class="director">Director: Jon Watts</p>
+                    <p class="release-date">Fecha de estreno: July 2, 2019</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Taylor_SMFFH_Reg_Lg.jpg" alt="Spider-Man: Far From Home Poster">
+                </div>
+            
+                <div class="movie">
+                    <p class="title">Black Widow</p>
+                    <p class="director">Director:Cate Shorland</p>
+                    <p class="release-date">Fecha de estreno: 7 July, 2021</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/blackwidow-main.jpeg" alt="Black Widow">
+                </div>
+            
+            
+                <div class="movie">
+                    <p class="title">WandaVision</p>
+                    <p class="director">Director: Matt Shakman</p>
+                    <p class="release-date">Fecha de estreno: January 15, 2021</p>
+                    <img src="https://mondoshop.com/cdn/shop/products/Murugiah_Wandavision_Lg.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">The Falcon and The Winter Soldier</p>
+                    <p class="director">Director: Kari Skogland</p>
+                    <p class="release-date">Fecha de estreno: March 19, 2021</p>
+                    <img src="https://movieposters2.com/images/1771572-b.jpg" alt="The Falcon and The Winter Soldier Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Loki</p>
+                    <p class="director">Director: Kate Herron</p>
+                    <p class="release-date">Fecha de estreno: June 9, 2021</p>
+                    <img src="https://pbs.twimg.com/media/F2YVRuNXwBQVv2l?format=jpg" alt="Loki Poster">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Shang-Chi and the Legend of the Ten Rings</p>
+                    <p class="director">Director: Destin Daniel Cretton</p>
+                    <p class="release-date">Fecha de estreno: September 3, 2021</p>
+                    <img src="https://i.pinimg.com/originals/ab/af/2a/abaf2adda7b655e52e72c3ca33761f06.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Eternals</p>
+                    <p class="director">Director: Chloé Zhao</p>
+                    <p class="release-date">Fecha de estreno: November 5, 2021</p>
+                    <img src="https://pbs.twimg.com/media/FCp0BwIXIAAsRF8.jpg">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">Hawkeye</p>
+                    <p class="director">Director: Rhys Thomas and Bert & Bertie</p>
+                    <p class="release-date">Fecha de estreno: November 24, 2021</p>
+                    <img src="https://www.posterposse.com/wp-content/uploads/2022/04/Nash_Hawkeye_Final-Rev_Low-Res.jpg">
+                </div>
+                
+               
+                <div class="movie">
+                    <p class="title">Moon Knight</p>
+                    <p class="director">Director: Various</p>
+                    <p class="release-date">Fecha de estreno: March 30, 2022</p>
+                    <img src="C:\Users\alber\OneDrive\Escritorio\Captura de pantalla 2023-10-18 125345.png">
+                </div>
+                
+                <div class="movie">
+                    <p class="title">She-Hulk</p>
+                    <p class="director">Director: Various</p>
+                    <p class="release-date">Fecha de estreno: August 18, 2022</p>
+                    <img src="https://i.marvelousnews.com/g/generated/Disney-Plus/She-Hulk/She_Hulk_Lawyer/she_hulk_ver3_xlg__scaled_800.jpg">
+                </div>
+                <body>
+                <div class="movie">
+                    <p class="title">Ms. Marvel</p>
+                    <p class="director">Director: Various</p>
+                    <p class="release-date">Fecha de estreno: June 8, 2022</p>
+                    <img src="https://caracoltv.brightspotcdn.com/dims4/default/20bc406/2147483647/strip/true/crop/743x1061+0+0/resize/743x1061!/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2F04%2F4f%2F3efa60fa4f25b068a476c00a2436%2Fms-marvel-disney-plus.png">
+    <div class="movie">
+        
+        <body>
+            
+            <div class="title">Marvel Studios Cinematic Universe Release Guideline</div>
+            <body>
+                <h1>Marvel Studios Cinematic Universe Release Guideline</h1>
+                <table>
+                  
+                
+                    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                    <script>
+                        $( function() {
+                            $( ".movie" ).draggable();
+                        } );
+            
+                    
+            </script>
+            
+        </div>
     
-    
-    
-    <div class="movie">
-        <p class="title">The Incredible Hulk</p>
-        <p class="director">Director: Louis Leterrier</p>
-        <p class="release-date">Fecha de estreno: June 13, 2008</p>
-        <img src="https://posterspy.com/wp-content/uploads/2020/06/IncredibleHulk_FiNAL_Plan-de-travail-1.png" alt="The Incredible Hulk Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Iron Man 2</p>
-        <p class="director">Director: Jon Favreau</p>
-        <p class="release-date">Fecha de estreno: May 7, 2010</p>
-        <img src="https://cdn.shopify.com/s/files/1/0558/2081/files/blog_iron_man6.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Thor</p>
-        <p class="director">Director: Kenneth Branagh</p>
-        <p class="release-date">Fecha de estreno: May 6, 2011</p>
-        <img src="https://mondoshop.com/cdn/shop/products/thor_blog_thumb_e75d865c-3a27-4990-aed4-dfa78fbf259f.jpeg" alt="Thor Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Captain America: The First Avenger</p>
-        <p class="director">Director: Joe Johnston</p>
-        <p class="release-date">Fecha de estreno: July 22, 2011</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Francavilla_CaptainAmericaTFA_1500px.jpg" alt="Captain America: The First Avenger Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">The Avengers</p>
-        <p class="director">Director: Joss Whedon</p>
-        <p class="release-date">Fecha de estreno: May 4, 2012</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Juugo_Avengers_1500px.jpg">
-    </div>
-
-
-
-
-    <div class="movie">
-        <p class="title">Iron Man 3</p>
-        <p class="director">Director: Shane Black</p>
-        <p class="release-date">Fecha de estreno: May 3, 2013</p>
-        <img src="https://mondoshop.com/cdn/shop/products/ansin-ironman3-reg-main.jpeg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Thor: The Dark World</p>
-        <p class="director">Director: Alan Taylor</p>
-        <p class="release-date">Fecha de estreno: November 8, 2013</p>
-        <img src="https://mondoshop.com/cdn/shop/products/taylorthor2regarchive_thumb_af72a088-a68d-4dcf-8cb8-1cbe112c1126.jpeg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Captain America: The Winter Soldier</p>
-        <p class="director">Directores: Anthony and Joe Russo</p>
-        <p class="release-date">Fecha de estreno: April 4, 2014</p>
-        <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericathewintersoldier_lob_crd_01.jpg" alt="Captain America: The Winter Soldier Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Guardians of the Galaxy</p>
-        <p class="director">Director: James Gunn</p>
-        <p class="release-date">Fecha de estreno: August 1, 2014</p>
-        <img src="https://mondoshop.com/cdn/shop/products/FrancescoFrancavilla_StarLord_Variant_blog.jpg" alt="Guardians of the Galaxy Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Avengers: Age of Ultron</p>
-        <p class="director">Director: Joss Whedon</p>
-        <p class="release-date">Fecha de estreno: May 1, 2015</p>
-        <img src="https://mondoshop.com/cdn/shop/products/AvengersAOU-Standard_FINALPRINT_1.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Ant-Man</p>
-        <p class="director">Director: Peyton Reed</p>
-        <p class="release-date">Fecha de estreno: July 17, 2015</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Mondo_Tong_AntMan_foilvariant_final_1024x1024_0b3f06ed-2e03-41dd-8aa0-3c85eee6f123.jpg">
-    </div>
-
-    <div class="movie">
-        <p class="title">Captain America: Civil War</p>
-        <p class="director">Director: Anthony and Joe Russo</p>
-        <p class="release-date">Fecha de estreno: May 6, 2016</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Barrett_CACW_Reg-Lg.jpg" alt="Captain America: Civil War Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Doctor Strange</p>
-        <p class="director">Director: Scott Derrickson</p>
-        <p class="release-date">Fecha de estreno: November 4, 2016</p>
-        <img src="https://i.ebayimg.com/images/g/5UUAAOSwLrNeczFo/s-l1600.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Guardians of the Galaxy Vol. 2</p>
-        <p class="director">Director: James Gunn</p>
-        <p class="release-date">Fecha de estreno: May 5, 2017</p>
-        <img src="https://mondoshop.com/cdn/shop/products/KTaylor_GOTGVol2_REG_FINAL_SM.jpg" alt="Guardians of the Galaxy Vol. 2 Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Spider-Man: Homecoming</p>
-        <p class="director">Director: Jon Watts</p>
-        <p class="release-date">Fecha de estreno: July 7, 2017</p>
-        <img src="https://i.pinimg.com/originals/db/6c/57/db6c571b245d97afc2378c7b5a400e47.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Thor: Ragnarok</p>
-        <p class="director">Director: Taika Waititi</p>
-        <p class="release-date">Fecha de estreno: November 3, 2017</p>
-        <img src="https://mondoshop.com/cdn/shop/products/MTaylor_ThorRagnarok_REGULAR_SM.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Black Panther</p>
-        <p class="director">Director: Ryan Coogler</p>
-        <p class="release-date">Fecha de estreno: February 16, 2018</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Taylor_BlackPanther_Var-Lg_1.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Avengers: Infinity War</p>
-        <p class="director">Director: Anthony and Joe Russo</p>
-        <p class="release-date">Fecha de estreno: April 27, 2018</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Taylor_InfinityWar_Reg_Sm.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Ant-Man and The Wasp</p>
-        <p class="director">Director: Peyton Reed</p>
-        <p class="release-date">Fecha de estreno: July 6, 2018</p>
-        <img src="https://mondoshop.com/cdn/shop/products/PCC_AntManWasp_Vert_Sm.jpg" alt="Ant-Man and The Wasp Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Captain Marvel</p>
-        <p class="director">Director: Anna Boden and Ryan Fleck</p>
-        <p class="release-date">Fecha de estreno: March 8, 2019</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Taylor_CM-Reg_Sm.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Avengers: Endgame</p>
-        <p class="director">Director: Anthony and Joe Russo</p>
-        <p class="release-date">Fecha de estreno: April 26, 2019</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Taylor_Endgame_R_Sm.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Spider-Man: Far From Home</p>
-        <p class="director">Director: Jon Watts</p>
-        <p class="release-date">Fecha de estreno: July 2, 2019</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Taylor_SMFFH_Reg_Lg.jpg" alt="Spider-Man: Far From Home Poster">
-    </div>
-
-    <div class="movie">
-        <p class="title">Black Widow</p>
-        <p class="director">Director:Cate Shorland</p>
-        <p class="release-date">Fecha de estreno: 7 July, 2021</p>
-        <img src="https://mondoshop.com/cdn/shop/products/blackwidow-main.jpeg" alt="Black Widow">
-    </div>
-
-
-    <div class="movie">
-        <p class="title">WandaVision</p>
-        <p class="director">Director: Matt Shakman</p>
-        <p class="release-date">Fecha de estreno: January 15, 2021</p>
-        <img src="https://mondoshop.com/cdn/shop/products/Murugiah_Wandavision_Lg.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">The Falcon and The Winter Soldier</p>
-        <p class="director">Director: Kari Skogland</p>
-        <p class="release-date">Fecha de estreno: March 19, 2021</p>
-        <img src="https://movieposters2.com/images/1771572-b.jpg" alt="The Falcon and The Winter Soldier Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Loki</p>
-        <p class="director">Director: Kate Herron</p>
-        <p class="release-date">Fecha de estreno: June 9, 2021</p>
-        <img src="https://pbs.twimg.com/media/F2YVRuNXwBQVv2l?format=jpg" alt="Loki Poster">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Shang-Chi and the Legend of the Ten Rings</p>
-        <p class="director">Director: Destin Daniel Cretton</p>
-        <p class="release-date">Fecha de estreno: September 3, 2021</p>
-        <img src="https://i.pinimg.com/originals/ab/af/2a/abaf2adda7b655e52e72c3ca33761f06.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Eternals</p>
-        <p class="director">Director: Chloé Zhao</p>
-        <p class="release-date">Fecha de estreno: November 5, 2021</p>
-        <img src="https://pbs.twimg.com/media/FCp0BwIXIAAsRF8.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Hawkeye</p>
-        <p class="director">Director: Rhys Thomas and Bert & Bertie</p>
-        <p class="release-date">Fecha de estreno: November 24, 2021</p>
-        <img src="https://www.posterposse.com/wp-content/uploads/2022/04/Nash_Hawkeye_Final-Rev_Low-Res.jpg">
-    </div>
-    
-   
-    <div class="movie">
-        <p class="title">Moon Knight</p>
-        <p class="director">Director: Various</p>
-        <p class="release-date">Fecha de estreno: March 30, 2022</p>
-        <img src="C:\Users\alber\OneDrive\Escritorio\Captura de pantalla 2023-10-18 125345.png">
-    </div>
-    
-    <div class="movie">
-        <p class="title">She-Hulk</p>
-        <p class="director">Director: Various</p>
-        <p class="release-date">Fecha de estreno: August 18, 2022</p>
-        <img src="https://i.marvelousnews.com/g/generated/Disney-Plus/She-Hulk/She_Hulk_Lawyer/she_hulk_ver3_xlg__scaled_800.jpg">
-    </div>
-    
-    <div class="movie">
-        <p class="title">Ms. Marvel</p>
-        <p class="director">Director: Various</p>
-        <p class="release-date">Fecha de estreno: June 8, 2022</p>
-        <img src="https://caracoltv.brightspotcdn.com/dims4/default/20bc406/2147483647/strip/true/crop/743x1061+0+0/resize/743x1061!/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2F04%2F4f%2F3efa60fa4f25b068a476c00a2436%2Fms-marvel-disney-plus.png">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-            $( function() {
-                $( ".movie" ).draggable();
-            } );
-        </script>
-
 </body>
 
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $(".movie").draggable();
+    });
+
+    function ordenarRanking() {
+        var thumbsUpCount = document.getElementsByClassName('thumbs-up').length;
+        var itsOkayCount = document.getElementsByClassName('its-okay').length;
+        var thumbsDownCount = document.getElementsByClassName('thumbs-down').length;
+
+        // Ordena los divs basado en los conteos
+        var movies = document.querySelectorAll('.movie');
+        var sortedMovies = Array.from(movies).sort(function (a, b) {
+            var aCount = a.getElementsByClassName('thumbs-up').length * 3 + a.getElementsByClassName('its-okay').length;
+            var bCount = b.getElementsByClassName('thumbs-up').length * 3 + b.getElementsByClassName('its-okay').length;
+            return bCount - aCount;
+        });
+
+        // Reordena los divs en la página
+        var container = document.querySelector('.movies-container');
+        sortedMovies.forEach(function (movie) {
+            container.appendChild(movie);
+        });
+    }
+</script>
+
+
 </html>
-
-
-
-
-
