@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
+   
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<head>uh
+<head>
+    <title>Integración de la API</title>
+</head>
+<body>
+    <h1>Películas</h1>
+    <ul id="movies-list"></ul>
+
+    <script>
+        // Realiza una solicitud a la API
+        axios.get('http://localhost:3000/api/movies')
+            .then(response => {
+                const movies = response.data;
+                const moviesList = document.getElementById('movies-list');
+
+                // Agrega cada película a la lista en el sitio web
+                movies.forEach(movie => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `${movie.title} - Director: ${movie.director} - Fecha de estreno: ${movie.release_date}`;
+                    moviesList.appendChild(listItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener datos de la API', error);
+            });
+    </script>
     
 
     <style>
@@ -134,9 +159,7 @@
                     <img src="https://mondoshop.com/cdn/shop/products/Koehler_IronMan_1500px.jpg?v=1657315505&" alt="Iron Man Poster">
                     <div class="rank">Rank: 1</div>
                     <div class="reaction">
-                        <div>&#128077;</div>
-                        <div>&#128078;</div>
-                        <div>ITS OKAY</div>
+                        
                       </div>
                     </div>
                 
@@ -398,6 +421,7 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     $(function () {
         $(".movie").draggable();
